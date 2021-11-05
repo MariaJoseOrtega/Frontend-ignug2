@@ -24,15 +24,17 @@
                      [required]="isRequired(logoField)"
                      [valid]="logoField.valid"
                      [touched]="logoField.touched"
-                     [dirty]="logoField.dirty">
-              </label>
-                <input pInputText id="logo" formControlName="logo">
-              <small appErrorMessage
+                     [dirty]="logoField.dirty"></label>
+                <input pInputText id="logo" formControlName="logo" class="text-uppercase">>
+                <small appErrorMessage
                      [errors]="logoField.errors"
                      [touched]="logoField.touched"
                      [dirty]="logoField.dirty">
               </small>
             </div>
+
+                        <!-- LOGO-->
+
             <div class="field xl:col-6 lg:col-6 md:col-12 sm:col-12">
               <label for="department" appLabel label="Tipo de departamento:"
                      [required]="isRequired(departmentField)"
@@ -48,21 +50,23 @@
               </small>
             </div>
           </div>
+                                  <!-- coordinacion-->
+
           <div class="formgrid grid">
             <div class="field xl:col-6 lg:col-6 md:col-12 sm:col-12">
               <label for="coordination" appLabel label="Sub. Fom. Técnica y Tecnológica:"
                      [required]="isRequired(coordinationField)"
                      [valid]="coordinationField.valid"
                      [touched]="coordinationField.touched"
-                     [dirty]="coordinationField.dirty">
-              </label>
-              <input pInputText id="coordination" formControlName="coordination">
+                     [dirty]="coordinationField.dirty"> </label>
+              <input pInputText id="coordination" formControlName="coordination" class="text-uppercase">>
               <small appErrorMessage
                      [errors]="coordinationField.errors"
                      [touched]="coordinationField.touched"
                      [dirty]="coordinationField.dirty">
               </small>
             </div>
+            
             <div class="field xl:col-6 lg:col-6 md:col-12 sm:col-12">
                 <label for="unit" appLabel label="Nombre del instituto:"
                        [required]="isRequired(unitField)"
@@ -70,7 +74,7 @@
                        [touched]="unitField.touched"
                        [dirty]="unitField.dirty">
                 </label>
-                <input pInputText id="unit" formControlName="unit">
+                <input pInputText id="unit" formControlName="unit" class="text-uppercase">> 
                 <small appErrorMessage
                        [errors]="unitField.errors"
                        [touched]="unitField.touched"
@@ -78,6 +82,8 @@
                 </small>
             </div>
           </div>
+
+
           <div class="formgrid grid">
             <div class="field xl:col-6 lg:col-6 md:col-12 sm:col-12">
                 <label for="approvalName" appLabel label="Nombre de quien aprueba:"
@@ -86,13 +92,15 @@
                        [touched]="approvalNameField.touched"
                        [dirty]="approvalNameField.dirty">
                 </label>
-                <input pInputText id="approvalName" formControlName="approvalName">
+                <input pInputText id="approvalName" formControlName="approvalName" class="text-uppercase">>
                 <small appErrorMessage
                        [errors]="approvalNameField.errors"
                        [touched]="approvalNameField.touched"
                        [dirty]="approvalNameField.dirty">
                 </small>
             </div>
+
+
             <div class="field xl:col-6 lg:col-6 md:col-12 sm:col-12">
                 <label for="registerName" appLabel label="Senescyt Talento Humano:"
                        [required]="isRequired(registerNameField)"
@@ -100,21 +108,12 @@
                        [touched]="registerNameField.touched"
                        [dirty]="registerNameField.dirty">
                 </label>
-                <input pInputText id="registerName" formControlName="registerName">
+                <input pInputText id="registerName" formControlName="registerName" class="text-uppercase">>
                 <small appErrorMessage
                        [errors]="registerNameField.errors"
                        [touched]="registerNameField.touched"
                        [dirty]="registerNameField.dirty">
                 </small>
-            </div>
-          </div>
-          <p-divider></p-divider>
-          <div class="formgrid grid">
-            <div class="field xl:col-6 lg:col-6 md:col-12 sm:col-12">
-              <button pButton pRipple [label]="buttonTitle" class="p-button-rounded" icon="pi pi-save"></button>
-            </div>
-            <div *ngIf="progressBar" class="field xl:col-6 lg:col-6 md:col-12 sm:col-12">
-              <app-progress-bar [message]="messageService.progressBarSaveOrUpdate"></app-progress-bar>
             </div>
           </div>
         </form>

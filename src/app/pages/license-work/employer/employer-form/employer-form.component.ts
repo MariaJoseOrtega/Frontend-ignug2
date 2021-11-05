@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit } from '@angular/core';
 import {Subscription} from "rxjs";
 import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {EmployerModel} from "@models/license-work";
 import {ActivatedRoute, Router} from "@angular/router";
 import {BreadcrumbService} from "@services/core/breadcrumb.service";
 import {MessageService} from "@services/core";
 import {LicenseWorkHttpService} from "@services/license-work";
-import {EmployerModel} from "@models/license-work";
 
 @Component({
   selector: 'app-employer-form',
@@ -13,6 +13,7 @@ import {EmployerModel} from "@models/license-work";
   styleUrls: ['./employer-form.component.scss']
 })
 export class EmployerFormComponent implements OnInit {
+
   private subscriptions: Subscription[] = [];
   form: FormGroup;
   progressBar: boolean = false;
@@ -67,12 +68,12 @@ export class EmployerFormComponent implements OnInit {
   newForm(): FormGroup {
     return this.formBuilder.group({
       id: [null],
-      logo:[null],
-      department:[null],
-      coordination:[null],
-      unit:[null],
-      approvalName:[null],
-      registerName:[null],
+      logo:[null, [Validators.required]],
+      department:[null, [Validators.required]],
+      coordination:[null, [Validators.required]],
+      unit:[null, [Validators.required]],
+      approvalName:[null, [Validators.required]],
+      registerName:[null, [Validators.required]],
     });
   }
 

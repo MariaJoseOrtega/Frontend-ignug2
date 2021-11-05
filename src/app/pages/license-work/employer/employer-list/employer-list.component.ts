@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import {Subscription} from "rxjs";
-import {ColModel, PaginatorModel} from "@models/core";
-import {MenuItem} from "primeng/api";
-import {EmployerModel} from "@models/license-work";
-import {Router} from "@angular/router";
-import {BreadcrumbService} from "@services/core/breadcrumb.service";
-import {MessageService} from "@services/core";
-import {LicenseWorkHttpService} from "@services/license-work";
+import {Component, OnInit } from '@angular/core';
 import {FormControl} from "@angular/forms";
+import { Router } from '@angular/router';
+import {ColModel, PaginatorModel} from "@models/core";
+import {ApplicationModel, EmployerModel } from '@models/license-work';
+import {MessageService} from "@services/core";
+import {BreadcrumbService} from "@services/core/breadcrumb.service";
+import {LicenseWorkHttpService} from "@services/license-work";
+import {MenuItem} from "primeng/api";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-employer-list',
@@ -20,18 +20,20 @@ export class EmployerListComponent implements OnInit {
   cols: ColModel[] = [];
   items: MenuItem[] = [];
   loading: boolean = false;
-  paginator: PaginatorModel = {current_page: 1, per_page: 5, total: 0};
   filter: FormControl;
+  paginator: PaginatorModel = {current_page: 1, per_page: 5, total: 0};
   progressBarDelete: boolean = false;
+
   employers: EmployerModel[] = [];
   selectedEmployer: EmployerModel = {};
   selectedEmployers: EmployerModel[] = [];
 
-  constructor(private router: Router,
-              private breadcrumbService: BreadcrumbService,
-              public messageService: MessageService,
-              private licenseWorkHttpService: LicenseWorkHttpService
-              ) 
+  constructor(
+    private router: Router,
+    private breadcrumbService: BreadcrumbService,
+    public messageService: MessageService,
+    private licenseWorkHttpService: LicenseWorkHttpService
+  ) 
   {
     this.breadcrumbService.setItems([
       {label: 'Home', disabled: true},
@@ -60,7 +62,8 @@ export class EmployerListComponent implements OnInit {
   loadEmployers() {
     this.loading = true;
     this.subscriptions.push(
-      this.licenseWorkHttpService.getEmployers(this.paginator, this.filter.value).subscribe(
+      this.licenseWorkHttpService.getEmployers(this.paginator, this.filter.value)
+      .subscribe(
         response => {
           this.loading = false;
           this.employers = response.data;
@@ -78,7 +81,7 @@ export class EmployerListComponent implements OnInit {
     }
   }
 
-  editEmployer(employer: EmployerModel) {
+  editEmployer(employer:  ApplicationModel) {
     this.router.navigate(['/license-work/employer/', employer.id]);
   }
 
@@ -155,14 +158,12 @@ export class EmployerListComponent implements OnInit {
   setCols() {
     this.cols = [
       {field: 'logo', header: 'Logo de Senescyt'},
-      {field: 'department', header: 'Departamento de la Senescyt '},
+      {field: 'department', header: 'Departamento de la Senescyt'},
       {field: 'coordination', header: 'Sub.Fom. Técnica y Tecnológica'},
       {field: 'unit', header: 'Nombre del Instituto'},
       {field: 'approvalName', header: 'Nombre de la persona quien aprueba'},
       {field: 'registerName', header: 'Senescyt_Talento_Humano'},
     ];
-    
-
   }
 
   setItems() {
